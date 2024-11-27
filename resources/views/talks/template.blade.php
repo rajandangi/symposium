@@ -6,6 +6,7 @@
             <input type="text" id="title" name="title"
                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                    placeholder="How to save a life">
+                   <x-input-error :messages="$errors->get('title')" />
         </div>
 
         <div class="grid grid-cols-2 gap-4">
@@ -17,12 +18,12 @@
                     <option>Standard</option>
                     <option>Keynote</option>
                 </select>
+                <x-input-error :messages="$errors->get('type')" />
             </div>
             <div>
                 <label for="length" class="block text-sm font-medium text-gray-700">Length</label>
                 <input type="text" id="length" name="length"
                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                <p class="mt-1 text-sm text-red-600" id="length-error">Error message here.</p>
             </div>
         </div>
 

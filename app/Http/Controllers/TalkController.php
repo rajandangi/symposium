@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Talk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TalkController extends Controller
 {
@@ -12,7 +13,11 @@ class TalkController extends Controller
      */
     public function index()
     {
-        //
+        $talks = Auth::user()->talks()->with('author')->get();
+
+        return view('talks.index', [
+            'talks' => $talks,
+        ]);
     }
 
     /**
@@ -20,7 +25,7 @@ class TalkController extends Controller
      */
     public function create()
     {
-        //
+        return view('talks.create');
     }
 
     /**
@@ -28,7 +33,19 @@ class TalkController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'length' => '',
+            'type' => 'required',
+            'abstract' => '',
+            'organizer_notes' => '',
+        ]);
+
+        // Create a new talk
+        Auth::user()->talks()->create($validated);
+
+        // Redirect to the talk
+        return redirect()->route('talks.index');
     }
 
     /**
@@ -36,7 +53,9 @@ class TalkController extends Controller
      */
     public function show(Talk $talk)
     {
-        //
+        return view('talks.show', [
+            'talk' => $talk,
+        ]);
     }
 
     /**
