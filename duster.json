@@ -1,0 +1,6 @@
+{
+    "exclude": [
+        "app/Http/Controllers/Auth/NewPasswordController.php",
+        "app/Http/Controllers/Auth/RegisteredUserController.php"
+    ]
+}

@@ -11,6 +11,12 @@
 
 This is the Laravel project for the Symposium application. This application contains one of best practices in Laravel to build a SaaS application.
 
+## Nouns/Ressources
+- **User**
+- **Talk**
+- **Conference**
+
+
 ## Learning Resources
 - [Duster](https://github.com/tighten/duster)
 - [How to set up Prettier On a Laravel App, Linting Tailwind Class Order and More](https://mattstauffer.com/blog/how-to-set-up-prettier-on-a-laravel-app-to-lint-tailwind-class-order-and-more/)
