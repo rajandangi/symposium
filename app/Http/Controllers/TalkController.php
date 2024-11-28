@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TalkType;
+use App\Http\Requests\StoreTalkRequest;
+use App\Http\Requests\UpdateTalkRequest;
 use App\Models\Talk;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class TalkController extends Controller
 {
@@ -31,18 +34,18 @@ class TalkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTalkRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'length' => '',
-            'type' => 'required',
-            'abstract' => '',
-            'organizer_notes' => '',
-        ]);
+        // $validated = $request->validate([
+        //     'title' => 'required|max:255',
+        //     'length' => '',
+        //     'type' => ['required', Rule::enum(TalkType::class)],
+        //     'abstract' => '',
+        //     'organizer_notes' => '',
+        // ]);
 
         // Create a new talk
-        Auth::user()->talks()->create($validated);
+        Auth::user()->talks()->create($request->validated());
 
         // Redirect to the talk
         return redirect()->route('talks.index');
@@ -63,15 +66,19 @@ class TalkController extends Controller
      */
     public function edit(Talk $talk)
     {
-        //
+        return view('talks.edit', [
+            'talk' => $talk,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Talk $talk)
+    public function update(UpdateTalkRequest $request, Talk $talk)
     {
-        //
+        $talk->update($request->validated());
+
+        return redirect()->route('talks.show', $talk);
     }
 
     /**
@@ -79,6 +86,8 @@ class TalkController extends Controller
      */
     public function destroy(Talk $talk)
     {
-        //
+        $talk->delete();
+
+        return redirect()->route('talks.index');
     }
 }
