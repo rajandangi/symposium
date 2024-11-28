@@ -30,6 +30,7 @@ class ConferenceFactory extends Factory
             'ends_at' => $endsAt,
             'cfp_starts_at' => $cfpStartsAt,
             'cfp_ends_at' => $cfpEndsAt,
+            'callingallpapers_id' => fake()->uuid(),
         ];
     }
 }

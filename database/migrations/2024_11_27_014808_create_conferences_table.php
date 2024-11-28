@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('url');
             $table->date('starts_at');
             $table->date('ends_at');
-            $table->date('cfp_starts_at'); // Call for proposals: Which is before the start date of the conference
+            $table->date('cfp_starts_at'); // Call for papers: Which is before the start date of the conference
             $table->date('cfp_ends_at');
+            $table->string('callingallpapers_id')->unique();
             $table->timestamps();
         });
     }

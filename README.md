@@ -20,6 +20,8 @@ This is the Laravel project for the Symposium application. This application cont
 ## Learning Resources
 - [Duster](https://github.com/tighten/duster)
 - [How to set up Prettier On a Laravel App, Linting Tailwind Class Order and More](https://mattstauffer.com/blog/how-to-set-up-prettier-on-a-laravel-app-to-lint-tailwind-class-order-and-more/)
+- [Laravel Socialite](https://laravel.com/docs/11.x/socialite)
+- [Mocking](https://laravel.com/docs/11.x/mocking#mocking-facades)
 
 ## License
 
