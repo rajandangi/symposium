@@ -12,7 +12,9 @@ class ConferenceController extends Controller
      */
     public function index()
     {
-        //
+        return view('conferences.index', [
+            'conferences' => Conference::orderBy('date_event_start')->paginate(10),
+        ]);
     }
 
     /**
