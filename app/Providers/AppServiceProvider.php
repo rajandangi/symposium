@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // See @https://laravel.com/docs/11.x/routing#rate-limiting
         RateLimiter::for('public_api', function (Request $request) {
             return $request->user()
                         ? Limit::perMinute(100)->by($request->user()->id)
