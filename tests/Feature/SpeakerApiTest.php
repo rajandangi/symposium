@@ -10,8 +10,7 @@ test('it gets speakers', function () {
     $response = $this->get('/api/speakers');
 
     $response->assertJson(
-        fn(AssertableJson $json) =>
-        $json->has('data', 3)
+        fn (AssertableJson $json) => $json->has('data', 3)
             ->where('data.0.name', $firstUser->name)
     );
 });

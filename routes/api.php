@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 // public_api rate limiter is defined in AppServiceProvider
 Route::middleware('throttle:public_api')->group(function () {
-  Route::get('speakers', function () {
-    return SpeakerResource::collection(User::all());
-  });
+    Route::get('speakers', function () {
+        return SpeakerResource::collection(User::all());
+    });
 
-  Route::get('user', function (Request $request) {
-    return $request->user();
-  })->middleware('auth:sanctum');
+    Route::get('user', function (Request $request) {
+        return $request->user();
+    })->middleware('auth:sanctum');
 });
